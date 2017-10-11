@@ -1,0 +1,9 @@
+{
+    "dev": {
+        "app_function": "app.app", 
+        "aws_region": "us-east-1", 
+        "project_name": "choro-tiles", 
+        "runtime": "python2.7", 
+        "slim_handler": "true"
+    }
+}
