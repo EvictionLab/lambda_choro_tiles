@@ -11,7 +11,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.collections import PatchCollection
 from matplotlib.colors import Normalize
-from palettable.colorbrewer.sequential import YlGnBu_9
+from palettable.colorbrewer.sequential import PuBu_9
 from descartes import PolygonPatch
 
 
@@ -29,7 +29,7 @@ def serve_tile(tiles, z, x, y):
     )
     # TODO: Make the data property a parameter
     data_vals = [f['properties']['population-2010'] for f in vector_data['cities']['features']]
-    cmap = YlGnBu_9.mpl_colormap
+    cmap = PuBu_9.mpl_colormap
     norm = Normalize(vmin=min(data_vals), vmax=max(data_vals))
 
     patches = []
@@ -60,14 +60,15 @@ def serve_tile(tiles, z, x, y):
     plt.savefig(
         buf, bbox_inches='tight', pad_inches=0, transparent=True, dpi=450, format='png'
     )
+    plt.close()
     buf.seek(0)
-    size = 256, 256
+    size = 258, 258
 
     im = Image.open(buf)
     im.thumbnail(size)
 
     im_buf = BytesIO()
-    im.save(im_buf, 'PNG')
+    im.crop((1, 1, 257, 257)).save(im_buf, 'PNG')
 
     response = make_response(im_buf.getvalue())
     response.headers['Content-Type'] = 'image/png'
