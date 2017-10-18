@@ -56,7 +56,6 @@ def serve_tile(tiles, z, x, y):
     ax.axis('off')
 
     buf = BytesIO()
-    # TODO: Remove slight border edge, in here or with cropping
     plt.savefig(
         buf, bbox_inches='tight', pad_inches=0, transparent=True, dpi=450, format='png'
     )
