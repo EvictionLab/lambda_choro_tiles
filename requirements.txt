@@ -23,7 +23,7 @@ lambda-packages==0.16.1
 mapbox-vector-tile==1.2.0
 MarkupSafe==1.0
 matplotlib==2.1.0
-numpy==1.13.3
+numpy==1.22.0
 placebo==0.8.1
 protobuf==3.4.0
 pyclipper==1.0.6
